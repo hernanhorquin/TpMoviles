@@ -1,13 +1,14 @@
 package com.example.tpfinalmoviles
 
 import android.content.Context
+import android.content.Intent
 import android.net.ConnectivityManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.example.tpfinalmoviles.data.repository.CowRepository
 import com.example.tpfinalmoviles.databinding.ActivityMainBinding
-import com.example.tpfinalmoviles.ui.MainViewModel
+import com.example.tpfinalmoviles.ui.*
 import com.example.tpfinalmoviles.utils.Status
 
 class MainActivity : AppCompatActivity() {
@@ -29,6 +30,18 @@ class MainActivity : AppCompatActivity() {
     private fun setListeners() {
         binding.createCow.setOnClickListener {
             viewModel.getCow()
+        }
+        binding.addCowBtn.setOnClickListener {
+            startActivity(Intent(this, AddCowActivity::class.java))
+        }
+        binding.addHerdBtn.setOnClickListener {
+            startActivity(Intent(this, AddHerdActivity::class.java))
+        }
+        binding.getCowBtn.setOnClickListener {
+            startActivity(Intent(this, GetCowActivity::class.java))
+        }
+        binding.getHerdBtn.setOnClickListener {
+            startActivity(Intent(this, GetHerdActivity::class.java))
         }
         viewModel.getCow.observe(this, {
             when (it.responseType) {

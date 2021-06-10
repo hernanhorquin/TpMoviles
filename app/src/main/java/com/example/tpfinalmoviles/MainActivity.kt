@@ -57,26 +57,27 @@ class MainActivity : AppCompatActivity() {
         viewModel.getHerdAlerts()
         */
 
-        //setListeners()
+        setListeners()
 
     }
 
     private fun setListeners() {
-        binding.createCow.setOnClickListener {
-            //viewModel.getCow()
-        }
         binding.addCowBtn.setOnClickListener {
             startActivity(Intent(this, AddCowActivity::class.java))
         }
+
         binding.addHerdBtn.setOnClickListener {
             startActivity(Intent(this, AddHerdActivity::class.java))
         }
+
         binding.getCowBtn.setOnClickListener {
             startActivity(Intent(this, GetCowActivity::class.java))
         }
+
         binding.getHerdBtn.setOnClickListener {
             startActivity(Intent(this, GetHerdActivity::class.java))
         }
+
         viewModel.getCow.observe(this, {
             when (it.responseType) {
                 Status.SUCCESSFUL -> {
@@ -106,7 +107,4 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    companion object {
-
-    }
 }

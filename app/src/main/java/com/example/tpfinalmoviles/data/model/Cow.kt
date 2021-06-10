@@ -16,7 +16,9 @@ data class Cow(
     @SerializedName("peso")
     val peso: Double,
     @SerializedName("ultimaFechaParto")
-    val ultimaFechaParto: String?
+    val ultimaFechaParto: String?,
+    @SerializedName("cc")
+    val cc: Int?
 )
 
 /*

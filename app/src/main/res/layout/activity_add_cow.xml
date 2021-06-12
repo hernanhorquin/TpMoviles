@@ -1,9 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.AddCowActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#FAFAFA"
+    android:padding="20dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/backBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_back" />
+
+        <EditText
+            android:id="@+id/totalPartosText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@color/white"
+            android:digits="0123456789"
+            android:ems="10"
+            android:hint="Cantidad De Partos"
+            android:inputType="number"
+            android:padding="10dp"
+            android:shape="rectangle" />
+
+        <EditText
+            android:id="@+id/electronicIdText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/idCantidadDePartos"
+            android:layout_marginTop="10dp"
+            android:background="@color/white"
+            android:digits="0123456789"
+            android:ems="10"
+            android:hint="ID Electronico"
+            android:inputType="number"
+            android:padding="10dp"
+            android:shape="rectangle" />
+
+        <EditText
+            android:id="@+id/birthDayText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/idElectronico"
+            android:layout_marginTop="10dp"
+            android:background="@color/white"
+            android:clickable="true"
+            android:ems="10"
+            android:focusable="false"
+            android:hint="Fecha De Nacimiento"
+            android:inputType="date"
+            android:padding="10dp"
+            android:shape="rectangle" />
+
+        <EditText
+            android:id="@+id/weigthText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/idFechaNacimiento"
+            android:layout_marginTop="10dp"
+            android:background="@color/white"
+            android:digits="0123456789."
+            android:ems="10"
+            android:hint="Peso"
+            android:inputType="numberDecimal"
+            android:padding="10dp"
+            android:shape="rectangle" />
+
+        <EditText
+            android:id="@+id/lastBornDateText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/idPeso"
+            android:layout_marginTop="10dp"
+            android:background="@color/white"
+            android:clickable="true"
+            android:ems="10"
+            android:focusable="false"
+            android:hint="Ultima Fecha de Parto"
+            android:inputType="textPersonName"
+            android:padding="10dp"
+            android:shape="rectangle" />
+
+        <EditText
+            android:id="@+id/herdIdText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/idUltFechaParto"
+            android:layout_marginTop="10dp"
+            android:background="@color/white"
+            android:digits="0123456789"
+            android:ems="10"
+            android:hint="Id Rodeo"
+            android:inputType="number"
+            android:padding="10dp"
+            android:shape="rectangle" />
+
+        <Button
+            android:id="@+id/addCowBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/idHerd"
+            android:layout_gravity="center"
+            android:layout_marginTop="35dp"
+            android:padding="10dp"
+            android:text="Cargar Vaca" />
+
+    </LinearLayout>
+
+</ScrollView>

@@ -8,7 +8,7 @@ data class Herd(
     @SerializedName("location")
     val location: String,
     @SerializedName("bcsPromedio")
-    val bcsPromedio: Double,
+    val bcsPromedio: Double?,
     @SerializedName("cows")
-    val cows: List<Cow>
+    val cows: List<Cow>?
 )

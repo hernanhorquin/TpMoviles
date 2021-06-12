@@ -24,6 +24,8 @@ class MainActivity : AppCompatActivity() {
 
         checkConnection()
 
+        viewModel.toggleSession(Session(true))
+
         /*
         // START SESSION
         viewModel.toggleSession(Session(true))

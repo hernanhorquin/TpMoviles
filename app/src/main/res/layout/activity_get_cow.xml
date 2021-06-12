@@ -77,15 +77,13 @@
                 android:weightSum="1.0"
                 app:layout_constraintBottom_toBottomOf="parent">
 
-                <TextView
+                <ImageView
                     android:id="@+id/alertIcon"
                     android:layout_height="match_parent"
                     android:layout_weight=".5"
                     android:layout_width="0dip"
-                    android:layout_margin="10dp"
-                    android:gravity="center"
-                    android:text="ICON"
-                    android:textSize="40sp" />
+                    android:layout_margin="35dp"
+                    app:srcCompat="@drawable/ticksign"/>
 
                 <TextView
                     android:id="@+id/alertTextField"
@@ -94,8 +92,8 @@
                     android:layout_width="0dip"
                     android:layout_margin="10dp"
                     android:gravity="center"
-                    android:text="CC de vaca por debajo del esperado."
-                    android:textColor="@color/black"
+                    android:text="CC dentro de los valores esperados"
+                    android:textColor="#1b5e20"
                     android:textSize="25sp" />
             </LinearLayout>
 

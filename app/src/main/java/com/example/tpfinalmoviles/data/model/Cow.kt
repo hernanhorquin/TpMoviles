@@ -18,7 +18,7 @@ data class Cow(
     @SerializedName("ultimaFechaParto")
     val ultimaFechaParto: String?,
     @SerializedName("cc")
-    val cc: Int?
+    val cc: Double?
 )
 
 /*

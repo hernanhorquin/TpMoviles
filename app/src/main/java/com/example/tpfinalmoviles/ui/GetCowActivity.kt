@@ -2,6 +2,7 @@ package com.example.tpfinalmoviles.ui
 
 import android.app.Activity
 import android.content.Context
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -9,7 +10,9 @@ import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.example.tpfinalmoviles.R
 import com.example.tpfinalmoviles.data.model.Cow
+import com.example.tpfinalmoviles.data.model.CowFiredAlert
 import com.example.tpfinalmoviles.data.repository.AppRepository
 import com.example.tpfinalmoviles.databinding.ActivityGetCowBinding
 import com.example.tpfinalmoviles.utils.Status
@@ -19,6 +22,8 @@ class GetCowActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityGetCowBinding
     private val viewModel = MainViewModel(AppRepository())
+
+    private var currentCow: Cow? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,6 +45,7 @@ class GetCowActivity : AppCompatActivity() {
             try {
                 val idToSearch = searchInputText.toInt()
                 viewModel.getCow(idToSearch)
+                viewModel.getCowAlerts()
             } catch (e: Exception) {
                 println("Por favor ingresar un ID válido")
 
@@ -65,9 +71,48 @@ class GetCowActivity : AppCompatActivity() {
             }
         })
 
+        viewModel.getCowAlerts.observe(this, { cowFiredAlerts ->
+            when (cowFiredAlerts.responseType) {
+                Status.SUCCESSFUL -> {
+                    var lastCowFiredAlert: CowFiredAlert? = null
+                    cowFiredAlerts.data.let {
+                        it?.forEach { cowAlert ->
+                            if (cowAlert.cow.id == currentCow?.id) {
+                                if (lastCowFiredAlert == null) {
+                                    lastCowFiredAlert = cowAlert
+                                } else {
+                                    if (cowAlert.fecha > lastCowFiredAlert!!.fecha) {
+                                        lastCowFiredAlert = cowAlert
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    if (lastCowFiredAlert?.bcsFired!! == currentCow?.cc) {
+                        binding.alertTextField.setText("CC fuera de los valores esperados")
+                        binding.alertTextField.setTextColor(Color.parseColor("#b71c1c"))
+                        binding.alertIcon.setImageResource(R.drawable.warningsign)
+                    } else {
+                        binding.alertTextField.setText("CC dentro de los valores esperados")
+                        binding.alertTextField.setTextColor(Color.parseColor("#1b5e20"))
+                        binding.alertIcon.setImageResource(R.drawable.ticksign)
+                    }
+                }
+                Status.ERROR -> {
+                    Toast.makeText(this, "No se pudo obtener la vaca buscada", Toast.LENGTH_LONG).show()
+                }
+                Status.LOADING -> {
+
+                }
+            }
+        })
+
     }
 
     private fun setUiValues(cow: Cow) {
+        currentCow = cow
+
         binding.cowIdField.setText("ID: " + cow!!.id)
         binding.ccField.setText("CC: " + cow.cc)
         binding.electronicIdField.setText("ID electrónico: " + cow.electronicId)

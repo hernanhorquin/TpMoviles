@@ -89,7 +89,7 @@ class GetCowActivity : AppCompatActivity() {
                         }
                     }
 
-                    if (lastCowFiredAlert?.bcsFired!! == currentCow?.cc) {
+                    if (lastCowFiredAlert?.bcsFired ?: 0.0 == currentCow?.cc) {
                         binding.alertTextField.setText("CC fuera de los valores esperados")
                         binding.alertTextField.setTextColor(Color.parseColor("#b71c1c"))
                         binding.alertIcon.setImageResource(R.drawable.warningsign)

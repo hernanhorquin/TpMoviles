@@ -6,5 +6,9 @@ data class Herd(
     @SerializedName("id")
     val id: Int?,
     @SerializedName("location")
-    val location: String
+    val location: String,
+    @SerializedName("bcsPromedio")
+    val bcsPromedio: Double,
+    @SerializedName("cows")
+    val cows: List<Cow>
 )

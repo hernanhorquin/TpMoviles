@@ -107,7 +107,7 @@ class AppRepository {
         return Result.Failure(Exception("bad_request"))
     }
 
-    fun getHerdAlerts(): Result<List<HerdAlert>> {
+    fun getHerdAlerts(): Result<List<HerdFiredAlert>> {
         val callResponse = apiService.createService(ApiConnections::class.java)
             .getHerdAlerts()
         val response = callResponse.execute()

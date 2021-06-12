@@ -50,9 +50,9 @@
                 <ImageView
                     android:layout_width="128dp"
                     android:layout_height="64dp"
-                    app:srcCompat="@drawable/vaca"
                     android:layout_marginTop="24dp"
-                    android:background="#3a3a3a" />
+                    android:background="#3a3a3a"
+                    app:srcCompat="@drawable/vaca" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -86,9 +86,9 @@
                 <ImageView
                     android:layout_width="128dp"
                     android:layout_height="64dp"
-                    android:src="@drawable/herd"
                     android:layout_marginTop="24dp"
-                    android:background="#3a3a3a" />
+                    android:background="#3a3a3a"
+                    android:src="@drawable/herd" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -121,9 +121,9 @@
                 <ImageView
                     android:layout_width="128dp"
                     android:layout_height="64dp"
-                    app:srcCompat="@drawable/vacaa"
                     android:layout_marginTop="24dp"
-                    android:background="#3a3a3a" />
+                    android:background="#3a3a3a"
+                    app:srcCompat="@drawable/vacaa" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -157,9 +157,9 @@
                 <ImageView
                     android:layout_width="128dp"
                     android:layout_height="64dp"
-                    android:src="@drawable/cowherd"
                     android:layout_marginTop="24dp"
-                    android:background="#3a3a3a" />
+                    android:background="#3a3a3a"
+                    android:src="@drawable/cowherd" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -167,6 +167,146 @@
                     android:layout_marginTop="20dp"
                     android:gravity="center"
                     android:text="Buscar Rodeo"
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/addCowAlertBtn"
+            android:layout_width="170dp"
+            android:layout_height="170dp"
+            android:layout_margin="10dp"
+            app:cardBackgroundColor="#3a3a3a"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="5dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="128dp"
+                    android:layout_height="64dp"
+                    android:layout_marginTop="24dp"
+                    android:background="#3a3a3a"
+                    android:src="@drawable/cowherd" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center"
+                    android:text="Agregar Alerta Vaca"
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/addHerdAlertBtn"
+            android:layout_width="170dp"
+            android:layout_height="170dp"
+            android:layout_margin="10dp"
+            app:cardBackgroundColor="#3a3a3a"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="5dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="128dp"
+                    android:layout_height="64dp"
+                    android:layout_marginTop="24dp"
+                    android:background="#3a3a3a"
+                    android:src="@drawable/cowherd" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center"
+                    android:text="Agregar Alerta Rodeo"
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/getCowAlertBtn"
+            android:layout_width="170dp"
+            android:layout_height="170dp"
+            android:layout_margin="10dp"
+            app:cardBackgroundColor="#3a3a3a"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="5dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="128dp"
+                    android:layout_height="64dp"
+                    android:layout_marginTop="24dp"
+                    android:background="#3a3a3a"
+                    android:src="@drawable/cowherd" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center"
+                    android:text="Obtener Alerta Vaca"
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/getHerdAlertBtn"
+            android:layout_width="170dp"
+            android:layout_height="170dp"
+            android:layout_margin="10dp"
+            app:cardBackgroundColor="#3a3a3a"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="5dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="128dp"
+                    android:layout_height="64dp"
+                    android:layout_marginTop="24dp"
+                    android:background="#3a3a3a"
+                    android:src="@drawable/cowherd" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center"
+                    android:text="Obtener Alerta Rodeo"
                     android:textColor="@color/white"
                     android:textSize="16sp" />
 

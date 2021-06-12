@@ -28,7 +28,7 @@ interface ApiConnections {
     fun getCowAlerts(): Call<List<CowFiredAlert>>
 
     @GET("herdFiredAlert")
-    fun getHerdAlerts(): Call<List<HerdAlert>>
+    fun getHerdAlerts(): Call<List<HerdFiredAlert>>
 
     @POST("session")
     fun toggleSession(@Body session: Session): Call<Boolean>

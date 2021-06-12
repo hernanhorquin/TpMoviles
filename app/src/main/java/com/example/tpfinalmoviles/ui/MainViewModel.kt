@@ -43,8 +43,8 @@ class MainViewModel(val appRepository: AppRepository): ViewModel() {
     val getCowAlerts: LiveData<Data<List<CowFiredAlert>>>
         get() = _getCowAlerts
 
-    private var _getHerdAlerts = MutableLiveData<Data<List<HerdAlert>>>()
-    val getHerdAlerts: LiveData<Data<List<HerdAlert>>>
+    private var _getHerdAlerts = MutableLiveData<Data<List<HerdFiredAlert>>>()
+    val getHerdAlerts: LiveData<Data<List<HerdFiredAlert>>>
         get() = _getHerdAlerts
 
     private var _toggleSession = MutableLiveData<Data<Boolean>>()

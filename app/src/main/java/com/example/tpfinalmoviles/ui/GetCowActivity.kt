@@ -1,15 +1,12 @@
 package com.example.tpfinalmoviles.ui
 
-import android.app.Activity
 import android.content.Context
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
-import androidx.fragment.app.Fragment
 import com.example.tpfinalmoviles.R
 import com.example.tpfinalmoviles.data.model.Cow
 import com.example.tpfinalmoviles.data.model.CowFiredAlert
@@ -74,27 +71,30 @@ class GetCowActivity : AppCompatActivity() {
         viewModel.getCowAlerts.observe(this, { cowFiredAlerts ->
             when (cowFiredAlerts.responseType) {
                 Status.SUCCESSFUL -> {
-                    var lastCowFiredAlert: CowFiredAlert? = null
-                    cowFiredAlerts.data.let {
-                        it?.forEach { cowAlert ->
-                            if (cowAlert.cow.id == currentCow?.id) {
-                                if (lastCowFiredAlert == null) {
-                                    lastCowFiredAlert = cowAlert
-                                } else {
-                                    if (cowAlert.fecha > lastCowFiredAlert!!.fecha) {
-                                        lastCowFiredAlert = cowAlert
-                                    }
-                                }
-                            }
-                        }
-                    }
+
+                    val lastCowFiredAlert = getLastAlert(cowFiredAlerts.data)
+
+//                    var lastCowFiredAlert: CowFiredAlert? = null
+//                    cowFiredAlerts.data.let {
+//                        it?.forEach { cowAlert ->
+//                            if (cowAlert.cow.id == currentCow?.id) {
+//                                if (lastCowFiredAlert == null) {
+//                                    lastCowFiredAlert = cowAlert
+//                                } else {
+//                                    if (cowAlert.fecha > lastCowFiredAlert!!.fecha) {
+//                                        lastCowFiredAlert = cowAlert
+//                                    }
+//                                }
+//                            }
+//                        }
+//                    }
 
                     if (lastCowFiredAlert?.bcsFired ?: 0.0 == currentCow?.cc) {
-                        binding.alertTextField.setText("CC fuera de los valores esperados")
+                        binding.alertTextField.text = "CC fuera de los valores esperados"
                         binding.alertTextField.setTextColor(Color.parseColor("#b71c1c"))
                         binding.alertIcon.setImageResource(R.drawable.warningsign)
                     } else {
-                        binding.alertTextField.setText("CC dentro de los valores esperados")
+                        binding.alertTextField.text = "CC dentro de los valores esperados"
                         binding.alertTextField.setTextColor(Color.parseColor("#1b5e20"))
                         binding.alertIcon.setImageResource(R.drawable.ticksign)
                     }
@@ -110,9 +110,16 @@ class GetCowActivity : AppCompatActivity() {
 
     }
 
+    private fun getLastAlert(data: List<CowFiredAlert>?) =
+        data?.filter {
+            it.id == currentCow?.id
+        }?.sortedByDescending {
+            it.fecha
+        }?.first()
+
+
     private fun setUiValues(cow: Cow) {
         currentCow = cow
-
         binding.cowIdField.setText("ID: " + cow!!.id)
         binding.ccField.setText("CC: " + cow.cc)
         binding.electronicIdField.setText("ID electrónico: " + cow.electronicId)

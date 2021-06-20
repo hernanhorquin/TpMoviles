@@ -36,9 +36,10 @@ class AddHerdActivity : AppCompatActivity() {
             when (it.responseType) {
                 Status.SUCCESSFUL -> {
                     Toast.makeText(this, "Id Rodeo: " + it.data?.id, Toast.LENGTH_LONG).show()
+                    this.finish()
                 }
                 Status.ERROR -> {
-
+                    Toast.makeText(this, "Error " + it.error?.message, Toast.LENGTH_LONG).show()
                 }
                 Status.LOADING -> {
 

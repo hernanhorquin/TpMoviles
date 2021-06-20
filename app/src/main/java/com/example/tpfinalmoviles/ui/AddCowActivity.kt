@@ -33,10 +33,10 @@ class AddCowActivity : AppCompatActivity() {
                     null,
                     binding.totalPartosText.text.toString().toInt(),
                     binding.electronicIdText.text.toString().toInt(),
-                    binding.birthDayText.text.toString(),
+                    "2021-10-23",//binding.birthDayText.text.toString(),
                     binding.herdIdText.text.toString().toInt(),
                     binding.weigthText.text.toString().toDouble(),
-                    binding.lastBornDateText.text.toString(),
+                    "2021-10-23",//binding.lastBornDateText.text.toString(),
                     null
                 )
             )
@@ -46,9 +46,10 @@ class AddCowActivity : AppCompatActivity() {
             when (it.responseType) {
                 Status.SUCCESSFUL -> {
                     Toast.makeText(this, "Id Vaca: " + it.data?.id, Toast.LENGTH_LONG).show()
+                    this.finish()
                 }
                 Status.ERROR -> {
-
+                    Toast.makeText(this, "Error: " + it.error?.message, Toast.LENGTH_LONG).show()
                 }
                 Status.LOADING -> {
 

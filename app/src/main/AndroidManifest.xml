@@ -17,6 +17,8 @@
         <activity android:name=".ui.GetCowActivity" />
         <activity android:name=".ui.AddHerdActivity" />
         <activity android:name=".ui.AddCowActivity" />
+        <activity android:name=".ui.AddCowAlertActivity" />
+        <activity android:name=".ui.AddHerdAlertActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

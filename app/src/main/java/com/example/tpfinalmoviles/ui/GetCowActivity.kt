@@ -98,6 +98,8 @@ class GetCowActivity : AppCompatActivity() {
                         binding.alertTextField.setTextColor(Color.parseColor("#1b5e20"))
                         binding.alertIcon.setImageResource(R.drawable.ticksign)
                     }
+
+                    binding.alertCardView.visibility = View.VISIBLE
                 }
                 Status.ERROR -> {
                     Toast.makeText(this, "No se pudo obtener la vaca buscada", Toast.LENGTH_LONG).show()

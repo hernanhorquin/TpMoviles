@@ -80,6 +80,14 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, GetHerdActivity::class.java))
         }
 
+        binding.addCowAlertBtn.setOnClickListener {
+            startActivity(Intent(this, AddCowAlertActivity::class.java))
+        }
+
+        binding.addHerdAlertBtn.setOnClickListener {
+            startActivity(Intent(this, AddHerdAlertActivity::class.java))
+        }
+
         viewModel.getCow.observe(this, {
             when (it.responseType) {
                 Status.SUCCESSFUL -> {

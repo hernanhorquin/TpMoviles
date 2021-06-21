@@ -27,15 +27,38 @@ class AddCowActivity : AppCompatActivity() {
             finish()
         }
 
+        //val cow = Cow(null, 2, 3, "2018-10-09", 1, 5.3, null)
         binding.addCowBtn.setOnClickListener {
+
+            var totalPartos: Int? = null
+            var electronicId: Int? = null
+            var weight: Double? = null
+            var herdId: Int? = null
+
+            if (binding.totalPartosText.text.toString().isNotEmpty()) {
+                totalPartos = binding.totalPartosText.text.toString().toInt()
+            }
+
+            if (binding.electronicIdText.text.toString().isNotEmpty()) {
+                electronicId = binding.electronicIdText.text.toString().toInt()
+            }
+
+            if (binding.weigthText.text.toString().isNotEmpty()) {
+                weight = binding.weigthText.text.toString().toDouble()
+            }
+
+            if (binding.herdIdText.text.toString().isNotEmpty()) {
+                herdId = binding.herdIdText.text.toString().toInt()
+            }
+
             viewModel.addCow(
                 Cow(
                     null,
-                    binding.totalPartosText.text.toString().toInt(),
-                    binding.electronicIdText.text.toString().toInt(),
+                    totalPartos!!,
+                    electronicId!!,
                     binding.birthDayText.text.toString(),
-                    binding.herdIdText.text.toString().toInt(),
-                    binding.weigthText.text.toString().toDouble(),
+                    herdId!!,
+                    weight!!,
                     binding.lastBornDateText.text.toString(),
                     null
                 )
@@ -45,10 +68,10 @@ class AddCowActivity : AppCompatActivity() {
         viewModel.createCow.observe(this, {
             when (it.responseType) {
                 Status.SUCCESSFUL -> {
-                    Toast.makeText(this, "Id Vaca: " + it.data?.id, Toast.LENGTH_LONG).show()
+                    Toast.makeText(this, "Vaca cargada exitosamente con id: " + it.data?.id, Toast.LENGTH_LONG).show()
                 }
                 Status.ERROR -> {
-
+                    Toast.makeText(this, "La vaca no pudo ser generada correctamente", Toast.LENGTH_LONG).show()
                 }
                 Status.LOADING -> {
 

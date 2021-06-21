@@ -35,10 +35,10 @@ class AddHerdActivity : AppCompatActivity() {
         viewModel.createHerd.observe(this, {
             when (it.responseType) {
                 Status.SUCCESSFUL -> {
-                    Toast.makeText(this, "Id Rodeo: " + it.data?.id, Toast.LENGTH_LONG).show()
+                    Toast.makeText(this, "Rodeo cargado exitosamente con id: " + it.data?.id, Toast.LENGTH_LONG).show()
                 }
                 Status.ERROR -> {
-
+                    Toast.makeText(this, "El rodeo no pudo ser generado correctamente", Toast.LENGTH_LONG).show()
                 }
                 Status.LOADING -> {
 

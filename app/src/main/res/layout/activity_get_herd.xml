@@ -47,6 +47,7 @@
         android:layout_height="200dp"
         android:layout_margin="10dp"
         android:weightSum="1.0"
+        android:visibility="gone"
         app:cardBackgroundColor="#eeffff"
         app:cardCornerRadius="22dp"
         app:cardElevation="5dp"

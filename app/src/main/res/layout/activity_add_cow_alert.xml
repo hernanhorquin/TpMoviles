@@ -18,90 +18,51 @@
             app:srcCompat="@drawable/ic_back" />
 
         <EditText
-            android:id="@+id/electronicIdText"
+            android:id="@+id/cowIdField"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:background="@color/white"
             android:digits="0123456789"
             android:ems="10"
-            android:hint="ID electrónico"
+            android:hint="Id de vaca"
             android:inputType="number"
             android:padding="10dp"
             android:shape="rectangle" />
 
         <EditText
-            android:id="@+id/totalPartosText"
+            android:id="@+id/bcsMinField"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:layout_marginTop="10dp"
-            android:digits="0123456789"
-            android:ems="10"
-            android:hint="Cantidad de partos"
-            android:inputType="number"
-            android:padding="10dp"
-            android:shape="rectangle" />
-
-        <EditText
-            android:id="@+id/birthDayText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="@color/white"
-            android:ems="10"
-            android:hint="Fecha de nacimiento (AAAA-MM-DD)"
-            android:padding="10dp"
-            android:shape="rectangle" />
-
-        <EditText
-            android:id="@+id/weigthText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/idFechaNacimiento"
             android:layout_marginTop="10dp"
             android:background="@color/white"
             android:digits="0123456789."
             android:ems="10"
-            android:hint="Peso"
+            android:hint="Bcs mínimo"
             android:inputType="numberDecimal"
             android:padding="10dp"
             android:shape="rectangle" />
 
         <EditText
-            android:id="@+id/lastBornDateText"
+            android:id="@+id/bcsMaxField"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:background="@color/white"
             android:ems="10"
-            android:hint="Ultima fecha de parto  (AAAA-MM-DD)"
-            android:padding="10dp"
-            android:shape="rectangle" />
-
-        <EditText
-            android:id="@+id/herdIdText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/idUltFechaParto"
-            android:layout_marginTop="10dp"
-            android:background="@color/white"
-            android:digits="0123456789"
-            android:ems="10"
-            android:hint="Id del rodeo al que pertenece"
-            android:inputType="number"
+            android:hint="Bcs máximo"
+            android:inputType="numberDecimal"
             android:padding="10dp"
             android:shape="rectangle" />
 
         <Button
-            android:id="@+id/addCowBtn"
+            android:id="@+id/addAlertBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/idHerd"
             android:layout_gravity="center"
             android:layout_marginTop="35dp"
             android:padding="10dp"
-            android:text="Cargar Vaca" />
+            android:text="Cargar Alerta" />
 
     </LinearLayout>
 

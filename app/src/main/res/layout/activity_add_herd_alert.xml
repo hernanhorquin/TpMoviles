@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FAFAFA"
+    android:padding="20dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/backBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_back" />
+
+        <EditText
+            android:id="@+id/herdIdField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@color/white"
+            android:digits="0123456789"
+            android:ems="10"
+            android:hint="Id de rodeo"
+            android:inputType="number"
+            android:padding="10dp"
+            android:shape="rectangle" />
+
+        <EditText
+            android:id="@+id/bcsMinField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@color/white"
+            android:digits="0123456789."
+            android:ems="10"
+            android:hint="Bcs mínimo"
+            android:inputType="numberDecimal"
+            android:padding="10dp"
+            android:shape="rectangle" />
+
+        <EditText
+            android:id="@+id/bcsMaxField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@color/white"
+            android:ems="10"
+            android:hint="Bcs máximo"
+            android:inputType="numberDecimal"
+            android:padding="10dp"
+            android:shape="rectangle" />
+
+        <Button
+            android:id="@+id/addAlertBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="35dp"
+            android:padding="10dp"
+            android:text="Cargar Alerta" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

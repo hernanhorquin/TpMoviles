@@ -3,6 +3,7 @@ package com.example.tpfinalmoviles.ui
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import com.example.tpfinalmoviles.R
 import com.example.tpfinalmoviles.data.model.CowFiredAlert
@@ -78,6 +79,8 @@ class GetHerdActivity : AppCompatActivity() {
                         binding.alertTextField.setTextColor(Color.parseColor("#1b5e20"))
                         binding.alertIcon.setImageResource(R.drawable.ticksign)
                     }
+
+                    binding.alertCardView.visibility = View.VISIBLE
                 }
                 Status.ERROR -> {
                     Toast.makeText(this, "No se pudo obtener la vaca buscada", Toast.LENGTH_LONG)

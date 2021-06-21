@@ -6,9 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import com.example.tpfinalmoviles.R
-import com.example.tpfinalmoviles.data.model.CowFiredAlert
 import com.example.tpfinalmoviles.data.model.Herd
-import com.example.tpfinalmoviles.data.model.HerdAlert
 import com.example.tpfinalmoviles.data.model.HerdFiredAlert
 import com.example.tpfinalmoviles.data.repository.AppRepository
 import com.example.tpfinalmoviles.databinding.ActivityGetHerdBinding
@@ -55,27 +53,28 @@ class GetHerdActivity : AppCompatActivity() {
         viewModel.getHerdAlerts.observe(this, {
             when (it.responseType) {
                 Status.SUCCESSFUL -> {
-                    var lastHerdFiredAlert: HerdFiredAlert? = null
-                    it.data.let {
-                        it?.forEach { herdAlert ->
-                            if (herdAlert.herd.id == currentHerd?.id) {
-                                if (lastHerdFiredAlert == null) {
-                                    lastHerdFiredAlert = herdAlert
-                                } else {
-                                    if (herdAlert.fecha > lastHerdFiredAlert!!.fecha) {
-                                        lastHerdFiredAlert = herdAlert
-                                    }
-                                }
-                            }
-                        }
-                    }
+
+                    val lastHerdFiredAlert = getLastAlert(it.data)
+//                    it.data.let {
+//                        it?.forEach { herdAlert ->
+//                            if (herdAlert.herd.id == currentHerd?.id) {
+//                                if (lastHerdFiredAlert == null) {
+//                                    lastHerdFiredAlert = herdAlert
+//                                } else {
+//                                    if (herdAlert.fecha > lastHerdFiredAlert!!.fecha) {
+//                                        lastHerdFiredAlert = herdAlert
+//                                    }
+//                                }
+//                            }
+//                        }
+//                    }
 
                     if (lastHerdFiredAlert?.bcsFired ?: 0.0 == currentHerd?.bcsPromedio) {
-                        binding.alertTextField.setText("CC fuera de los valores esperados")
+                        binding.alertTextField.text = "CC fuera de los valores esperados"
                         binding.alertTextField.setTextColor(Color.parseColor("#b71c1c"))
                         binding.alertIcon.setImageResource(R.drawable.warningsign)
                     } else {
-                        binding.alertTextField.setText("CC dentro de los valores esperados")
+                        binding.alertTextField.text = "CC dentro de los valores esperados"
                         binding.alertTextField.setTextColor(Color.parseColor("#1b5e20"))
                         binding.alertIcon.setImageResource(R.drawable.ticksign)
                     }
@@ -92,6 +91,13 @@ class GetHerdActivity : AppCompatActivity() {
             }
         })
     }
+
+    private fun getLastAlert(data: List<HerdFiredAlert>?) =
+        data?.filter {
+            it.id == currentHerd?.id
+        }?.sortedByDescending {
+            it.fecha
+        }?.first()
 
     private fun setUI(data: Herd?) {
         binding.locationField.text = "Ubicacion: " + data?.location

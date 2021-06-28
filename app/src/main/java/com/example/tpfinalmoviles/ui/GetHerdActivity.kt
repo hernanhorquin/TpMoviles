@@ -60,19 +60,6 @@ class GetHerdActivity : AppCompatActivity() {
                 Status.SUCCESSFUL -> {
 
                     val lastHerdFiredAlert = getLastAlert(it.data)
-//                    it.data.let {
-//                        it?.forEach { herdAlert ->
-//                            if (herdAlert.herd.id == currentHerd?.id) {
-//                                if (lastHerdFiredAlert == null) {
-//                                    lastHerdFiredAlert = herdAlert
-//                                } else {
-//                                    if (herdAlert.fecha > lastHerdFiredAlert!!.fecha) {
-//                                        lastHerdFiredAlert = herdAlert
-//                                    }
-//                                }
-//                            }
-//                        }
-//                    }
 
                     if (lastHerdFiredAlert?.bcsFired ?: 0.0 == currentHerd?.bcsPromedio) {
                         binding.alertTextField.text = "CC fuera de los valores esperados"

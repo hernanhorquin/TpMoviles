@@ -14,7 +14,8 @@
         android:layout_height="wrap_content"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_back" />
+        app:srcCompat="@drawable/ic_back"
+        app:tint="@color/purple_500" />
 
     <LinearLayout
         android:id="@+id/searchLayout"
@@ -45,7 +46,6 @@
             android:layout_margin="10dp"
             android:gravity="center"
             android:text="Buscar"
-            android:background="@color/cardview_dark_background"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             />

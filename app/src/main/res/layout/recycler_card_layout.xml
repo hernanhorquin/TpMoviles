@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
     xmlns:recyclerCardView="http://schemas.android.com/apk/res-auto"
     android:id="@+id/recyclerCardView"
-    android:layout_margin="12dp"
-    recyclerCardView:cardBackgroundColor="#227C9D"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="16dp"
+    recyclerCardView:cardBackgroundColor="@color/purple_500"
     recyclerCardView:cardCornerRadius="20dp"
     recyclerCardView:cardElevation="6dp"
     recyclerCardView:contentPadding="4dp">
@@ -16,92 +16,91 @@
         android:padding="16dp">
 
         <TextView
+            android:id="@+id/recyclerCardIdTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginEnd="25dp"
             android:text="ID"
             android:textColor="@color/white"
-            android:id="@+id/recyclerCardIdTitle"
-            android:textStyle="bold"
-            android:layout_alignParentTop="true"
             android:textSize="25sp"
-            android:layout_marginEnd="25dp"/>
+            android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/recyclerCardIdData"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/recyclerCardIdTitle"
             android:text="10"
             android:textColor="@color/white"
-            android:id="@+id/recyclerCardIdData"
-            android:layout_below="@+id/recyclerCardIdTitle"
             android:textSize="15sp" />
 
         <TextView
+            android:id="@+id/recyclerCardCowField"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginEnd="25dp"
+            android:layout_toEndOf="@+id/recyclerCardIdTitle"
             android:text="VACA"
             android:textColor="@color/white"
-            android:id="@+id/recyclerCardCowField"
-            android:textStyle="bold"
-            android:layout_alignParentTop="true"
-            android:layout_toEndOf="@+id/recyclerCardIdTitle"
             android:textSize="25sp"
-            android:layout_marginEnd="25dp"/>
+            android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/recyclerCardCowDataId"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/recyclerCardCowField"
+            android:layout_alignStart="@+id/recyclerCardCowField"
             android:text="4"
             android:textColor="@color/white"
-            android:id="@+id/recyclerCardCowDataId"
-            android:layout_below="@+id/recyclerCardCowField"
-            android:textSize="15sp"
-            android:layout_alignStart="@+id/recyclerCardCowField"/>
+            android:textSize="15sp" />
 
         <TextView
+            android:id="@+id/recyclerCardBcsField"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginEnd="25dp"
+            android:layout_toEndOf="@+id/recyclerCardCowField"
             android:text="BCS"
             android:textColor="@color/white"
-            android:id="@+id/recyclerCardBcsField"
-            android:textStyle="bold"
-            android:layout_alignParentTop="true"
-            android:layout_toEndOf="@+id/recyclerCardCowField"
             android:textSize="25sp"
-            android:layout_marginEnd="25dp"/>
+            android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/recyclerCardBcsData"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/recyclerCardCowField"
+            android:layout_alignStart="@+id/recyclerCardBcsField"
             android:text="TEST"
             android:textColor="@color/white"
-            android:id="@+id/recyclerCardBcsData"
-            android:layout_below="@+id/recyclerCardCowField"
-            android:textSize="15sp"
-            android:layout_alignStart="@+id/recyclerCardBcsField"/>
+            android:textSize="15sp" />
 
         <TextView
+            android:id="@+id/recyclerCardDateField"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="FECHA"
-            android:textColor="@color/white"
-            android:id="@+id/recyclerCardDateField"
-            android:textStyle="bold"
             android:layout_alignParentTop="true"
             android:layout_toEndOf="@+id/recyclerCardBcsField"
-            android:textSize="25sp" />
+            android:text="FECHA"
+            android:textColor="@color/white"
+            android:textSize="25sp"
+            android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/recyclerCardDateData"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/recyclerCardDateField"
+            android:layout_alignStart="@+id/recyclerCardDateField"
             android:text="TEST"
             android:textColor="@color/white"
-            android:id="@+id/recyclerCardDateData"
-            android:layout_below="@+id/recyclerCardDateField"
-            android:textSize="15sp"
-            android:layout_alignStart="@+id/recyclerCardDateField"/>
+            android:textSize="15sp" />
 
     </RelativeLayout>
-
 
 
 </androidx.cardview.widget.CardView>

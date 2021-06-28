@@ -79,21 +79,6 @@ class GetCowActivity : AppCompatActivity() {
 
                     val lastCowFiredAlert = getLastAlert(cowFiredAlerts.data)
 
-//                    var lastCowFiredAlert: CowFiredAlert? = null
-//                    cowFiredAlerts.data.let {
-//                        it?.forEach { cowAlert ->
-//                            if (cowAlert.cow.id == currentCow?.id) {
-//                                if (lastCowFiredAlert == null) {
-//                                    lastCowFiredAlert = cowAlert
-//                                } else {
-//                                    if (cowAlert.fecha > lastCowFiredAlert!!.fecha) {
-//                                        lastCowFiredAlert = cowAlert
-//                                    }
-//                                }
-//                            }
-//                        }
-//                    }
-
                     if (lastCowFiredAlert?.bcsFired ?: 0.0 == currentCow?.cc) {
                         binding.alertTextField.text = "CC fuera de los valores esperados"
                         binding.alertTextField.setTextColor(Color.parseColor("#b71c1c"))

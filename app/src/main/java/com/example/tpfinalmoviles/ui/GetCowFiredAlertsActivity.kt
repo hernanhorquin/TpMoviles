@@ -14,6 +14,8 @@ class GetCowFiredAlertsActivity: AppCompatActivity() {
     private lateinit var binding: ActivityGetCowFiredAlertsBinding
     private val viewModel = MainViewModel(AppRepository())
 
+    private lateinit var adapter: RecyclerAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -21,7 +23,6 @@ class GetCowFiredAlertsActivity: AppCompatActivity() {
         setContentView(binding.root)
 
         binding.recyclerCardViewElement.layoutManager = LinearLayoutManager(this)
-        binding.recyclerCardViewElement.adapter = RecyclerAdapter()
 
         setupListeners()
 
@@ -38,6 +39,9 @@ class GetCowFiredAlertsActivity: AppCompatActivity() {
             when (it.responseType) {
                 Status.SUCCESSFUL -> {
                     println(it.data)
+                    adapter = RecyclerAdapter()
+                    adapter.cowFiredAlertList = it.data?.toMutableList() ?: mutableListOf()
+                    binding.recyclerCardViewElement.adapter = adapter
                     Toast.makeText(this, "Funciono el GET", Toast.LENGTH_LONG).show()
                 }
                 Status.ERROR -> {

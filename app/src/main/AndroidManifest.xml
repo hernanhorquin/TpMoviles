@@ -13,13 +13,30 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TpFinalMoviles"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.GetHerdActivity"></activity>
-        <activity android:name=".ui.GetCowActivity" />
-        <activity android:name=".ui.AddHerdActivity" />
-        <activity android:name=".ui.AddCowActivity" />
-        <activity android:name=".ui.AddCowAlertActivity" />
-        <activity android:name=".ui.AddHerdAlertActivity" />
-        <activity android:name=".ui.GetCowFiredAlertsActivity" />
+        <activity
+            android:name=".ui.GetHerdFiredAlertsActivity"
+            android:theme="@style/Theme.TpFinalMoviles.NoActionBar" />
+        <activity
+            android:name=".ui.GetHerdActivity"
+            android:theme="@style/Theme.TpFinalMoviles.NoActionBar" />
+        <activity
+            android:name=".ui.GetCowActivity"
+            android:theme="@style/Theme.TpFinalMoviles.NoActionBar" />
+        <activity
+            android:name=".ui.AddHerdActivity"
+            android:theme="@style/Theme.TpFinalMoviles.NoActionBar" />
+        <activity
+            android:name=".ui.AddCowActivity"
+            android:theme="@style/Theme.TpFinalMoviles.NoActionBar" />
+        <activity
+            android:name=".ui.AddCowAlertActivity"
+            android:theme="@style/Theme.TpFinalMoviles.NoActionBar" />
+        <activity
+            android:name=".ui.AddHerdAlertActivity"
+            android:theme="@style/Theme.TpFinalMoviles.NoActionBar" />
+        <activity
+            android:name=".ui.GetCowFiredAlertsActivity"
+            android:theme="@style/Theme.TpFinalMoviles.NoActionBar" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -12,6 +12,7 @@
         android:id="@+id/backBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:tint="@color/purple_500"
         app:srcCompat="@drawable/ic_back" />
 
     <LinearLayout
@@ -40,7 +41,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:background="@color/cardview_dark_background"
             android:gravity="center"
             android:text="Buscar"
             app:layout_constraintEnd_toEndOf="parent"

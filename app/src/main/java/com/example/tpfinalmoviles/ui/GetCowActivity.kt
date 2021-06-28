@@ -34,6 +34,10 @@ class GetCowActivity : AppCompatActivity() {
 
     private fun init() {
 
+        binding.backBtn.setOnClickListener {
+            finish()
+        }
+
         binding.searchButton.setOnClickListener {
             hideKeyboard()
             binding.searchInput.clearFocus()

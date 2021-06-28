@@ -30,6 +30,11 @@ class GetHerdActivity : AppCompatActivity() {
     }
 
     private fun setUpListeners() {
+
+        binding.backBtn.setOnClickListener {
+            finish()
+        }
+
         binding.searchButton.setOnClickListener {
             viewModel.getHerd(binding.searchInput.text.toString().toInt())
             viewModel.getHerdAlerts()

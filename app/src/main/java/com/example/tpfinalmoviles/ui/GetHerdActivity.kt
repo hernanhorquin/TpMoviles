@@ -61,17 +61,20 @@ class GetHerdActivity : AppCompatActivity() {
 
                     val lastHerdFiredAlert = getLastAlert(it.data)
 
-                    if (lastHerdFiredAlert?.bcsFired ?: 0.0 == currentHerd?.bcsPromedio) {
-                        binding.alertTextField.text = "CC fuera de los valores esperados"
-                        binding.alertTextField.setTextColor(Color.parseColor("#b71c1c"))
-                        binding.alertIcon.setImageResource(R.drawable.warningsign)
-                    } else {
-                        binding.alertTextField.text = "CC dentro de los valores esperados"
-                        binding.alertTextField.setTextColor(Color.parseColor("#1b5e20"))
-                        binding.alertIcon.setImageResource(R.drawable.ticksign)
-                    }
+                    lastHerdFiredAlert?.let {
+                        if (lastHerdFiredAlert.bcsFired ?: 0.0 == currentHerd?.bcsPromedio) {
+                            binding.alertTextField.text = "CC fuera de los valores esperados"
+                            binding.alertTextField.setTextColor(Color.parseColor("#b71c1c"))
+                            binding.alertIcon.setImageResource(R.drawable.warningsign)
+                        } else {
+                            binding.alertTextField.text = "CC dentro de los valores esperados"
+                            binding.alertTextField.setTextColor(Color.parseColor("#1b5e20"))
+                            binding.alertIcon.setImageResource(R.drawable.ticksign)
+                        }
 
+                    }
                     binding.alertCardView.visibility = View.VISIBLE
+
                 }
                 Status.ERROR -> {
                     Toast.makeText(this, "No se pudo obtener la vaca buscada", Toast.LENGTH_LONG)

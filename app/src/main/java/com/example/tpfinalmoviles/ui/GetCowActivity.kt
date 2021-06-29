@@ -78,18 +78,20 @@ class GetCowActivity : AppCompatActivity() {
                 Status.SUCCESSFUL -> {
 
                     val lastCowFiredAlert = getLastAlert(cowFiredAlerts.data)
+                    lastCowFiredAlert?.let {
+                        if (lastCowFiredAlert.bcsFired == currentCow?.cc) {
+                            binding.alertTextField.text = "CC fuera de los valores esperados"
+                            binding.alertTextField.setTextColor(Color.parseColor("#b71c1c"))
+                            binding.alertIcon.setImageResource(R.drawable.warningsign)
+                        } else {
+                            binding.alertTextField.text = "CC dentro de los valores esperados"
+                            binding.alertTextField.setTextColor(Color.parseColor("#1b5e20"))
+                            binding.alertIcon.setImageResource(R.drawable.ticksign)
+                        }
 
-                    if (lastCowFiredAlert?.bcsFired ?: 0.0 == currentCow?.cc) {
-                        binding.alertTextField.text = "CC fuera de los valores esperados"
-                        binding.alertTextField.setTextColor(Color.parseColor("#b71c1c"))
-                        binding.alertIcon.setImageResource(R.drawable.warningsign)
-                    } else {
-                        binding.alertTextField.text = "CC dentro de los valores esperados"
-                        binding.alertTextField.setTextColor(Color.parseColor("#1b5e20"))
-                        binding.alertIcon.setImageResource(R.drawable.ticksign)
                     }
-
                     binding.alertCardView.visibility = View.VISIBLE
+
                 }
                 Status.ERROR -> {
                     Toast.makeText(this, "No se pudo obtener la vaca buscada", Toast.LENGTH_LONG).show()

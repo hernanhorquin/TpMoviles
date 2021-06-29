@@ -27,7 +27,7 @@ class GetHerdFiredAlertsActivity : AppCompatActivity() {
 
         setupListeners()
 
-        viewModel.getCowAlerts()
+        viewModel.getHerdAlerts()
     }
 
     private fun setupListeners() {
@@ -36,7 +36,7 @@ class GetHerdFiredAlertsActivity : AppCompatActivity() {
             finish()
         }
 
-        viewModel.getCowAlerts.observe(this, {
+        viewModel.getHerdAlerts.observe(this, {
             when (it.responseType) {
                 Status.SUCCESSFUL -> {
                     println(it.data)

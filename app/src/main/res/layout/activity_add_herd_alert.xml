@@ -26,7 +26,7 @@
             android:background="@color/white"
             android:digits="0123456789"
             android:ems="10"
-            android:hint="Id de rodeo"
+            android:hint="*Id de rodeo"
             android:inputType="number"
             android:padding="10dp"
             android:shape="rectangle" />
@@ -39,7 +39,7 @@
             android:background="@color/white"
             android:digits="0123456789."
             android:ems="10"
-            android:hint="Bcs mínimo"
+            android:hint="*Bcs mínimo"
             android:inputType="numberDecimal"
             android:padding="10dp"
             android:shape="rectangle" />
@@ -51,10 +51,17 @@
             android:layout_marginTop="10dp"
             android:background="@color/white"
             android:ems="10"
-            android:hint="Bcs máximo"
+            android:hint="*Bcs máximo"
             android:inputType="numberDecimal"
             android:padding="10dp"
             android:shape="rectangle" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="* Campos obligatorios"
+            android:textColor="@color/black"/>
 
         <Button
             android:id="@+id/addAlertBtn"

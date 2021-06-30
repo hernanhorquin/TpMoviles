@@ -38,14 +38,11 @@ class GetCowFiredAlertsActivity: AppCompatActivity() {
         viewModel.getCowAlerts.observe(this, {
             when (it.responseType) {
                 Status.SUCCESSFUL -> {
-                    println(it.data)
                     adapter = RecyclerAdapter()
                     adapter.cowFiredAlertList = it.data?.toMutableList() ?: mutableListOf()
                     binding.recyclerCardViewElement.adapter = adapter
-                    Toast.makeText(this, "Funciono el GET", Toast.LENGTH_LONG).show()
                 }
                 Status.ERROR -> {
-                    Toast.makeText(this, "No funciono el GET, manco", Toast.LENGTH_LONG).show()
                 }
                 Status.LOADING -> {
 

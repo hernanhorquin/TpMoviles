@@ -29,15 +29,19 @@ class AddCowAlertActivity: AppCompatActivity() {
         }
 
         binding.addAlertBtn.setOnClickListener {
-            viewModel.addCowAlert(
-                CowAlert(
-                    null,
-                    binding.cowIdField.text.toString().toInt(),
-                    null,
-                    binding.bcsMaxField.text.toString().toDouble(),
-                    binding.bcsMinField.text.toString().toDouble()
+            try {
+                viewModel.addCowAlert(
+                    CowAlert(
+                        null,
+                        binding.cowIdField.text.toString().toInt(),
+                        null,
+                        binding.bcsMaxField.text.toString().toDouble(),
+                        binding.bcsMinField.text.toString().toDouble()
+                    )
                 )
-            )
+            } catch (e: Exception) {
+                Toast.makeText(this, "La alerta no pudo ser generada correctamente. Por favor verificar los datos ingresados.", Toast.LENGTH_LONG).show()
+            }
         }
 
         viewModel.addCowAlert.observe(this, {

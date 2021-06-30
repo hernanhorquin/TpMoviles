@@ -49,9 +49,6 @@ class GetCowActivity : AppCompatActivity() {
                 viewModel.getCow(idToSearch)
                 viewModel.getCowAlerts()
             } catch (e: Exception) {
-                println("Por favor ingresar un ID válido")
-
-                // TODO: Fixear este Toast
                 Toast.makeText(this, "Por favor ingresar un ID válido", Toast.LENGTH_LONG).show()
             }
 

@@ -26,7 +26,7 @@
             android:background="@color/white"
             android:digits="0123456789"
             android:ems="10"
-            android:hint="ID electrónico"
+            android:hint="*ID electrónico"
             android:inputType="number"
             android:padding="10dp"
             android:shape="rectangle" />
@@ -39,7 +39,7 @@
             android:layout_marginTop="10dp"
             android:digits="0123456789"
             android:ems="10"
-            android:hint="Cantidad de partos"
+            android:hint="*Cantidad de partos"
             android:inputType="number"
             android:padding="10dp"
             android:shape="rectangle" />
@@ -51,7 +51,7 @@
             android:layout_marginTop="10dp"
             android:background="@color/white"
             android:ems="10"
-            android:hint="Fecha de nacimiento (AAAA-MM-DD)"
+            android:hint="*Fecha de nacimiento (AAAA-MM-DD)"
             android:padding="10dp"
             android:shape="rectangle" />
 
@@ -64,7 +64,7 @@
             android:background="@color/white"
             android:digits="0123456789."
             android:ems="10"
-            android:hint="Peso"
+            android:hint="*Peso"
             android:inputType="numberDecimal"
             android:padding="10dp"
             android:shape="rectangle" />
@@ -89,10 +89,17 @@
             android:background="@color/white"
             android:digits="0123456789"
             android:ems="10"
-            android:hint="Id del rodeo al que pertenece"
+            android:hint="*Id del rodeo al que pertenece"
             android:inputType="number"
             android:padding="10dp"
             android:shape="rectangle" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:text="* Campos obligatorios"
+            android:textColor="@color/black"/>
 
         <Button
             android:id="@+id/addCowBtn"

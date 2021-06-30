@@ -26,39 +26,6 @@ class MainActivity : AppCompatActivity() {
 
         viewModel.toggleSession(Session(true))
 
-        /*
-        // START SESSION
-        viewModel.toggleSession(Session(true))
-
-        // GET COW
-        val getCowResult = viewModel.getCow(1)
-
-        // POST COW
-        val cow = Cow(null, 2, 3, "2018-10-09", 1, 5.3, null)
-        viewModel.createCow(cow)
-
-        // GET HERD
-        val getHerdResult = viewModel.getHerd(1)
-
-        // POST HERD
-        val herd = Herd(null, "Cuarto rodeo")
-        viewModel.createHerd(herd)
-
-        // POST COW ALERT
-        val cowAlert = CowAlert(null,2, null, 7.7, 3.3)
-        viewModel.addCowAlert(cowAlert)
-
-        // POST HERD ALERT
-        val herdAlert = HerdAlert(null, 1, 9.0, 6.0)
-        viewModel.addHerdAlert(herdAlert)
-
-        // GET COW ALERTS
-        viewModel.getCowAlerts()
-
-        // GET HERD ALERTS
-        viewModel.getHerdAlerts()
-        */
-
         setListeners()
 
     }
@@ -96,20 +63,6 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, GetHerdFiredAlertsActivity::class.java))
         }
 
-        viewModel.getCow.observe(this, {
-            when (it.responseType) {
-                Status.SUCCESSFUL -> {
-                    println(it.data)
-                    Toast.makeText(this, "Funciono el GET", Toast.LENGTH_LONG).show()
-                }
-                Status.ERROR -> {
-                    Toast.makeText(this, "No funciono el GET, manco", Toast.LENGTH_LONG).show()
-                }
-                Status.LOADING -> {
-
-                }
-            }
-        })
     }
 
     private fun checkConnection() {

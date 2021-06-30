@@ -51,18 +51,22 @@ class AddCowActivity : AppCompatActivity() {
                 herdId = binding.herdIdText.text.toString().toInt()
             }
 
-            viewModel.addCow(
-                Cow(
-                    null,
-                    totalPartos!!,
-                    electronicId!!,
-                    binding.birthDayText.text.toString(),
-                    herdId!!,
-                    weight!!,
-                    binding.lastBornDateText.text.toString(),
-                    null
+            try {
+                viewModel.addCow(
+                    Cow(
+                        null,
+                        totalPartos!!,
+                        electronicId!!,
+                        binding.birthDayText.text.toString(),
+                        herdId!!,
+                        weight!!,
+                        binding.lastBornDateText.text.toString(),
+                        null
+                    )
                 )
-            )
+            } catch (e: Exception) {
+                Toast.makeText(this, "La vaca no pudo ser generada correctamente. Por favor verificar los datos ingresados.", Toast.LENGTH_LONG).show()
+            }
         }
 
         viewModel.createCow.observe(this, {

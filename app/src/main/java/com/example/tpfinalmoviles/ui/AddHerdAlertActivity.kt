@@ -29,14 +29,19 @@ class AddHerdAlertActivity: AppCompatActivity() {
         }
 
         binding.addAlertBtn.setOnClickListener {
-            viewModel.addHerdAlert(
-                HerdAlert(
-                    null,
-                    binding.herdIdField.text.toString().toInt(),
-                    binding.bcsMaxField.text.toString().toDouble(),
-                    binding.bcsMinField.text.toString().toDouble()
+
+            try {
+                viewModel.addHerdAlert(
+                    HerdAlert(
+                        null,
+                        binding.herdIdField.text.toString().toInt(),
+                        binding.bcsMaxField.text.toString().toDouble(),
+                        binding.bcsMinField.text.toString().toDouble()
+                    )
                 )
-            )
+            } catch (e: Exception) {
+                Toast.makeText(this, "La alerta no pudo ser generada correctamente. Por favor verificar los datos ingresados.", Toast.LENGTH_LONG).show()
+            }
         }
 
         viewModel.addHerdAlert.observe(this, {

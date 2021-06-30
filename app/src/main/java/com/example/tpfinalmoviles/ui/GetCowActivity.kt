@@ -44,13 +44,9 @@ class GetCowActivity : AppCompatActivity() {
 
             val searchInputText: String = binding.searchInput.text.toString()
 
-            try {
-                val idToSearch = searchInputText.toInt()
-                viewModel.getCow(idToSearch)
-                viewModel.getCowAlerts()
-            } catch (e: Exception) {
-                Toast.makeText(this, "Por favor ingresar un ID válido", Toast.LENGTH_LONG).show()
-            }
+            val idToSearch = searchInputText.toInt()
+            viewModel.getCow(idToSearch)
+            viewModel.getCowAlerts()
 
         }
 
@@ -62,7 +58,8 @@ class GetCowActivity : AppCompatActivity() {
                     }
                 }
                 Status.ERROR -> {
-                    Toast.makeText(this, "No se pudo obtener la vaca buscada", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this, "No se pudo obtener la vaca buscada", Toast.LENGTH_LONG)
+                        .show()
                 }
                 Status.LOADING -> {
 
@@ -91,7 +88,8 @@ class GetCowActivity : AppCompatActivity() {
 
                 }
                 Status.ERROR -> {
-                    Toast.makeText(this, "No se pudo obtener la vaca buscada", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this, "No se pudo obtener la vaca buscada", Toast.LENGTH_LONG)
+                        .show()
                 }
                 Status.LOADING -> {
 
@@ -101,12 +99,22 @@ class GetCowActivity : AppCompatActivity() {
 
     }
 
-    private fun getLastAlert(data: List<CowFiredAlert>?) =
-        data?.filter {
-            it.id == currentCow?.id
-        }?.sortedByDescending {
-            it.fecha
-        }?.first()
+    private fun getLastAlert(data: List<CowFiredAlert>?): CowFiredAlert? {
+        data?.let { list ->
+            if (list.isNotEmpty()) {
+                val lastAlert: List<CowFiredAlert> = list.filter {
+                    it.id == currentCow?.id
+                }.sortedByDescending {
+                    it.fecha
+                }
+                return if (lastAlert.isNotEmpty())
+                    lastAlert[0]
+                else
+                    null
+            } else null
+        }
+        return null
+    }
 
 
     private fun setUiValues(cow: Cow) {
@@ -115,11 +123,16 @@ class GetCowActivity : AppCompatActivity() {
         binding.ccField.setText("CC: " + cow.cc)
         binding.electronicIdField.setText("ID electrónico: " + cow.electronicId)
         binding.cantidadPartosField.setText("Cantidad de partos: " + cow.cantidadPartos)
-        binding.fechaNacimientoField.setText("Fecha de nacimiento: " + cow.fechaNacimiento.substring(0, 10))
+        binding.fechaNacimientoField.setText(
+            "Fecha de nacimiento: " + cow.fechaNacimiento.substring(
+                0,
+                10
+            )
+        )
         binding.herdIdField.setText("Pertenece al rodeo: " + cow.herdId)
         binding.pesoField.setText("Peso: " + cow.peso)
 
-        val fechaUltimoParto : String
+        val fechaUltimoParto: String
         if (cow.ultimaFechaParto != null) {
             fechaUltimoParto = cow.ultimaFechaParto.substring(0, 10)
         } else {

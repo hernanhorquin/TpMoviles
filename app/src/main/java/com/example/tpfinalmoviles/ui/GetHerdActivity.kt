@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import com.example.tpfinalmoviles.R
+import com.example.tpfinalmoviles.data.model.CowFiredAlert
 import com.example.tpfinalmoviles.data.model.Herd
 import com.example.tpfinalmoviles.data.model.HerdFiredAlert
 import com.example.tpfinalmoviles.data.repository.AppRepository
@@ -47,7 +48,8 @@ class GetHerdActivity : AppCompatActivity() {
                     currentHerd = it.data
                 }
                 Status.ERROR -> {
-
+                    Toast.makeText(this, "No se pudo obtener el rodeo buscado", Toast.LENGTH_LONG)
+                        .show()
                 }
                 Status.LOADING -> {
 
@@ -77,7 +79,7 @@ class GetHerdActivity : AppCompatActivity() {
 
                 }
                 Status.ERROR -> {
-                    Toast.makeText(this, "No se pudo obtener la vaca buscada", Toast.LENGTH_LONG)
+                    Toast.makeText(this, "No se pudo obtener el rodeo buscado", Toast.LENGTH_LONG)
                         .show()
                 }
                 Status.LOADING -> {
@@ -87,12 +89,22 @@ class GetHerdActivity : AppCompatActivity() {
         })
     }
 
-    private fun getLastAlert(data: List<HerdFiredAlert>?) =
-        data?.filter {
-            it.id == currentHerd?.id
-        }?.sortedByDescending {
-            it.fecha
-        }?.first()
+    private fun getLastAlert(data: List<HerdFiredAlert>?): HerdFiredAlert? {
+        data?.let { list ->
+            if (list.isNotEmpty()) {
+                val lastAlert: List<HerdFiredAlert> = list.filter {
+                    it.id == currentHerd?.id
+                }.sortedByDescending {
+                    it.fecha
+                }
+                return if (lastAlert.isNotEmpty())
+                    lastAlert[0]
+                else
+                    null
+            } else null
+        }
+        return null
+    }
 
     private fun setUI(data: Herd?) {
         binding.locationField.text = "Ubicacion: " + data?.location

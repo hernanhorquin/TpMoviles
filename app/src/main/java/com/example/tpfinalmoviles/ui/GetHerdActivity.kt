@@ -61,20 +61,31 @@ class GetHerdActivity : AppCompatActivity() {
             when (it.responseType) {
                 Status.SUCCESSFUL -> {
 
-                    val lastHerdFiredAlert = getLastAlert(it.data)
-
-                    lastHerdFiredAlert?.let {
-                        if (lastHerdFiredAlert.bcsFired ?: 0.0 == currentHerd?.bcsPromedio) {
-                            binding.alertTextField.text = "CC fuera de los valores esperados"
-                            binding.alertTextField.setTextColor(Color.parseColor("#b71c1c"))
-                            binding.alertIcon.setImageResource(R.drawable.warningsign)
-                        } else {
-                            binding.alertTextField.text = "CC dentro de los valores esperados"
-                            binding.alertTextField.setTextColor(Color.parseColor("#1b5e20"))
-                            binding.alertIcon.setImageResource(R.drawable.ticksign)
+                    var lastHerdFiredAlert: HerdFiredAlert? = null
+                    it.data.let {
+                        it?.forEach { herdAlert ->
+                            if (herdAlert.herd.id == currentHerd?.id) {
+                                if (lastHerdFiredAlert == null) {
+                                    lastHerdFiredAlert = herdAlert
+                                } else {
+                                    if (herdAlert.fecha > lastHerdFiredAlert!!.fecha) {
+                                        lastHerdFiredAlert = herdAlert
+                                    }
+                                }
+                            }
                         }
-
                     }
+
+                    if (lastHerdFiredAlert?.bcsFired ?: 0.0 == currentHerd?.bcsPromedio) {
+                        binding.alertTextField.text = "CC fuera de los valores esperados"
+                        binding.alertTextField.setTextColor(Color.parseColor("#b71c1c"))
+                        binding.alertIcon.setImageResource(R.drawable.warningsign)
+                    } else {
+                        binding.alertTextField.text = "CC dentro de los valores esperados"
+                        binding.alertTextField.setTextColor(Color.parseColor("#1b5e20"))
+                        binding.alertIcon.setImageResource(R.drawable.ticksign)
+                    }
+
                     binding.alertCardView.visibility = View.VISIBLE
 
                 }

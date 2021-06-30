@@ -71,19 +71,31 @@ class GetCowActivity : AppCompatActivity() {
             when (cowFiredAlerts.responseType) {
                 Status.SUCCESSFUL -> {
 
-                    val lastCowFiredAlert = getLastAlert(cowFiredAlerts.data)
-                    lastCowFiredAlert?.let {
-                        if (lastCowFiredAlert.bcsFired == currentCow?.cc) {
-                            binding.alertTextField.text = "CC fuera de los valores esperados"
-                            binding.alertTextField.setTextColor(Color.parseColor("#b71c1c"))
-                            binding.alertIcon.setImageResource(R.drawable.warningsign)
-                        } else {
-                            binding.alertTextField.text = "CC dentro de los valores esperados"
-                            binding.alertTextField.setTextColor(Color.parseColor("#1b5e20"))
-                            binding.alertIcon.setImageResource(R.drawable.ticksign)
+                    var lastCowFiredAlert: CowFiredAlert? = null
+                    cowFiredAlerts.data.let {
+                        it?.forEach { cowAlert ->
+                            if (cowAlert.cow.id == currentCow?.id) {
+                                if (lastCowFiredAlert == null) {
+                                    lastCowFiredAlert = cowAlert
+                                } else {
+                                    if (cowAlert.fecha > lastCowFiredAlert!!.fecha) {
+                                        lastCowFiredAlert = cowAlert
+                                    }
+                                }
+                            }
                         }
-
                     }
+
+                    if (lastCowFiredAlert?.bcsFired ?: 0.0 == currentCow?.cc) {
+                        binding.alertTextField.text = "CC fuera de los valores esperados"
+                        binding.alertTextField.setTextColor(Color.parseColor("#b71c1c"))
+                        binding.alertIcon.setImageResource(R.drawable.warningsign)
+                    } else {
+                        binding.alertTextField.text = "CC dentro de los valores esperados"
+                        binding.alertTextField.setTextColor(Color.parseColor("#1b5e20"))
+                        binding.alertIcon.setImageResource(R.drawable.ticksign)
+                    }
+
                     binding.alertCardView.visibility = View.VISIBLE
 
                 }
